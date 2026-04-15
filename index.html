@@ -71,24 +71,14 @@ nav.scrolled {
   border-bottom: 1px solid var(--border);
 }
 .nav-logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
   font-family: var(--syne);
   font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: -0.03em;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
   text-decoration: none;
   color: var(--text);
 }
-.nav-logo:hover {
-  background: rgba(0,212,170,0.08);
-}
+.nav-logo span { color: var(--accent); }
 .nav-links { display: flex; gap: 2.5rem; list-style: none; }
 .nav-links a {
   text-decoration: none;
@@ -546,7 +536,7 @@ footer a { color: var(--accent); text-decoration: none; }
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#hero" class="nav-logo">SM</a>
+  <a href="#hero" class="nav-logo">SM<span>.</span></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
