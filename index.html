@@ -709,22 +709,31 @@ footer a:hover::after { width: 100%; }
   .nav-links a { font-size: 1.1rem; }
   .nav-links a::after { display: none; }
   
-  /* Disable expensive animations on mobile */
+  /* Keep animations but disable expensive ones on mobile */
   .hero-glow-1, .hero-glow-2 { display: none; }
-  .proj
-ect-card:hover { transform: none; box-shadow: none; }
-  .project-card { border-top: 2px solid var(--accent); }
-  .skill-card:hover { transform: none; box-shadow: none; }
-  .education-card:hover { transform: none; }
-  .community-card:hover { transform: none; box-shadow: none; }
-  .edu-card:hover { transform: none; box-shadow: none; }
   
-  /* Simplify transitions on mobile */
-  .skill-tag { transition: background 0.15s, border-color 0.15s; }
-  .project-card::before { display: none; }
+  /* Disable hover-specific effects but keep entrance animations */
+  .project-card:hover { transform: none !important; box-shadow: none !important; }
+  .project-card { border-top: 2px solid var(--accent); transition: border-color 0.3s; will-change: transform; }
+  .skill-card:hover { transform: none !important; box-shadow: none !important; }
+  .education-card:hover { transform: none; }
+  .community-card:hover { transform: none !important; box-shadow: none !important; }
+  .edu-card:hover { transform: none !important; box-shadow: none !important; }
+  .chip:hover { transform: none !important; }
+  .cert-item:hover { transform: none !important; box-shadow: none !important; }
+  .contact-link:hover { transform: none !important; }
+  .contact-link:hover svg { transform: none !important; }
+  
+  /* Keep animations for tags but reduce transitions */
+  .skill-tag { transition: background 0.2s, border-color 0.2s; will-change: background; }
+  .skill-tag:hover { transform: none !important; }
+  
+  /* Keep line animations but disable overlay effects */
+  .project-card::before { animation: slide-in-left 0.6s ease-out both; }
   .project-card::after { display: none; }
-  .about-avatar-inner { transition: none; }
-  .about-avatar-inner::after { display: none; }
+  .about-avatar-inner { transition: box-shadow 0.3s; }
+  .about-avatar-inner::after { opacity: 1; }
+  .about-avatar-wrap:hover .about-avatar-inner { transform: none !important; }
   
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
   .about-avatar-wrap { order: -1; }
@@ -746,17 +755,18 @@ ect-card:hover { transform: none; box-shadow: none; }
   .hero-stats { flex-direction: column; gap: 1.25rem; }
   .hero-actions { flex-direction: column; align-items: stretch; }
   .btn-primary, .btn-ghost { justify-content: center; width: 100%; }
-  .btn-primary::before { display: none; }
-  .project-card { padding: 1.5rem; }
-  .project-card, .edu-card, .cert-item, .community-card { transition: none; }
+  .btn-primary::before { animation: slideLeft 0.5s ease forwards; }
+  .project-card { padding: 1.5rem; transform: none !important; }
+  .project-card::before { animation: slide-in-left 0.5s ease-out both; }
   .edu-card, .cert-item, .community-card { padding: 1.5rem; }
   .contact-links { flex-direction: column; gap: 1rem; }
   footer { padding-bottom: 3rem; }
   
-  /* Disable all hover 3D effects on small screens */
-  .project-card { transform: none !important; }
-  .skill-card { animation-name: none; }
-  .comm-icon { animation: none; }
+  /* Keep entrance animations but disable hover 3D effects */
+  .project-card:hover { transform: none !important; }
+  .skill-card { transition: border-color 0.3s, box-shadow 0.3s; }
+  .skill-tag:hover { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.3); }
+  .comm-icon { animation: float 3s ease-in-out infinite; }
 }
 </style>
 </head>
@@ -1181,27 +1191,29 @@ window.addEventListener('keydown', e => {
   }
 });
 
-// ── REVEAL ON SCROLL
+// ── REVEAL ON SCROLL - Mobile optimized
 const observer = new IntersectionObserver(entries => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      const delay = window.innerWidth < 768 ? i * 50 : i * 80;
+      setTimeout(() => e.target.classList.add('visible'), delay);
       observer.unobserve(e.target);
     }
   });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// ── SKILL BARS
+// ── SKILL BARS - Mobile optimized
 const barObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.querySelectorAll('.skill-bar-fill').forEach((bar, i) => {
         const w = parseFloat(bar.style.getPropertyValue('--w'));
+        const delay = window.innerWidth >= 768 ? i * 150 + 200 : i * 100 + 100;
         setTimeout(() => {
           bar.classList.add('animated');
           bar.style.transform = `scaleX(${w})`;
-        }, i * 150 + 200);
+        }, delay);
       });
       barObserver.unobserve(entry.target);
     }
@@ -1219,45 +1231,69 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// ── TILT EFFECT on project cards
-document.querySelectorAll('.project-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const r = card.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - 0.5;
-    const y = (e.clientY - r.top) / r.height - 0.5;
-    card.style.transform = `translateY(-10px) perspective(1000px) rotateX(${-y*5}deg) rotateY(${x*5}deg)`;
-  });
-  card.addEventListener('mouseleave', () => { card.style.transform = 'translateY(-10px)'; });
-});
+// ── DETECT TOUCH DEVICE
+const isTouchDevice = () => window.matchMedia('(hover: none)').matches || navigator.maxTouchPoints > 0;
 
-// ── PARALLAX EFFECT on hero section
-window.addEventListener('scroll', () => {
-  const hero = document.getElementById('hero');
-  if (hero) {
-    const rect = hero.getBoundingClientRect();
-    if (rect.top < window.innerHeight) {
-      const offset = rect.top * 0.5;
-      hero.style.transform = `translateY(${offset}px)`;
+// ── TILT EFFECT on project cards (desktop only)
+if (!isTouchDevice()) {
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `translateY(-10px) perspective(1000px) rotateX(${-y*5}deg) rotateY(${x*5}deg)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = 'translateY(-10px)'; });
+  });
+
+  // ── PARALLAX EFFECT on hero section (desktop only)
+  window.addEventListener('scroll', () => {
+    const hero = document.getElementById('hero');
+    if (hero) {
+      const rect = hero.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        const offset = rect.top * 0.5;
+        hero.style.transform = `translateY(${offset}px)`;
+      }
     }
+  });
+} else {
+  // ── MOBILE: Ensure smooth transforms
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.style.transform = 'none';
+  });
+}
+
+// ── ENHANCED SECTION ANIMATIONS - Mobile aware
+const isMobile = window.innerWidth < 768;
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  if (!isMobile) {
+    el.style.animation = `fadeUp 0.7s ${0.1 + i * 0.15}s both, scale-grow 0.7s ${0.1 + i * 0.15}s both`;
+    el.style.animationComposition = 'add';
+  } else {
+    el.style.animation = `fadeUp 0.5s ${0.05 + i * 0.1}s both`;
   }
 });
 
-// ── ENHANCED SECTION ANIMATIONS
-document.querySelectorAll('.reveal').forEach((el, i) => {
-  el.style.animation = `fadeUp 0.7s ${0.1 + i * 0.15}s both, scale-grow 0.7s ${0.1 + i * 0.15}s both`;
-  el.style.animationComposition = 'add';
-});
-
-// ── DYNAMICALLY STAGGER CARD ANIMATIONS
-document.querySelectorAll('.skill-card, .project-card, .edu-card, .community-card').forEach((card, i) => {
-  const delay = (i * 0.1) % 0.5;
-  card.style.animation = `scale-grow 0.6s ${0.2 + delay}s both`;
-});
+// ── DYNAMICALLY STAGGER CARD ANIMATIONS (Mobile-optimized)
+if (window.innerWidth >= 768) {
+  document.querySelectorAll('.skill-card, .project-card, .edu-card, .community-card').forEach((card, i) => {
+    const delay = (i * 0.1) % 0.5;
+    card.style.animation = `scale-grow 0.6s ${0.2 + delay}s both`;
+  });
+} else {
+  // Mobile: Quicker, simpler animations
+  document.querySelectorAll('.skill-card, .project-card, .edu-card, .community-card').forEach((card, i) => {
+    const delay = (i * 0.08) % 0.3;
+    card.style.animation = `fadeUp 0.5s ${0.1 + delay}s both`;
+  });
+}
 
 // ── ANIMATE STACK TAGS
 document.querySelectorAll('.stack-tag').forEach((tag, i) => {
   tag.style.opacity = '0';
-  tag.style.animation = `fadeUp 0.4s ${0.3 + i * 0.08}s both`;
+  const delay = window.innerWidth >= 768 ? 0.3 + i * 0.08 : 0.2 + i * 0.05;
+  tag.style.animation = `fadeUp 0.4s ${delay}s both`;
 });
 
 // ── SMART SCROLL VISIBILITY
@@ -1269,6 +1305,49 @@ const scrollAnimObserver = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.1 });
+
+// ── MOBILE ANIMATION TWEAKS
+window.addEventListener('resize', () => {
+  if (window.innerWidth < 768) {
+    // Reduce animation complexity on small screens
+    document.querySelectorAll('[style*="animation"]').forEach(el => {
+      const style = el.getAttribute('style');
+      if (style.includes('0.15s')) {
+        el.style.animationDuration = '0.2s';
+      }
+    });
+  }
+});
+
+// ── DISABLE HOVER STATES ON TOUCH
+if (isTouchDevice()) {
+  document.addEventListener('touchstart', function() {}, false);
+  document.querySelectorAll('a, button, .project-card, .skill-card, .edu-card').forEach(el => {
+    el.addEventListener('touchstart', function() {
+      this.style.opacity = '0.8';
+    });
+    el.addEventListener('touchend', function() {
+      this.style.opacity = '1';
+    });
+  });
+}
+
+// ── ENSURE ANIMATIONS WORK ON LOAD
+window.addEventListener('load', () => {
+  document.querySelectorAll('.reveal').forEach(el => {
+    if (!el.classList.contains('visible')) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      observer.observe(el);
+    }
+  });
+});
 </script>
 </body>
 </html>
