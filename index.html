@@ -737,6 +737,7 @@ footer a:hover::after { width: 100%; }
   
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
   .about-avatar-wrap { order: -1; }
+  .hero-name { font-size: clamp(2.5rem, 8vw, 5.5rem); }
   .hero-stats { gap: 2rem; }
   #hero { padding: 5.5rem 4% 3rem; }
   .hero-content { max-width: 100%; width: min(100%, 700px); margin: 0 auto; }
@@ -750,7 +751,7 @@ footer a:hover::after { width: 100%; }
 }
 @media (max-width: 480px) {
   section { padding: 4.5rem 4%; }
-  .hero-name { font-size: clamp(2.8rem, 14vw, 5rem); }
+  .hero-name { font-size: clamp(2rem, 12vw, 4rem); }
   .hero-badge { margin-bottom: 1.25rem; }
   .hero-stats { flex-direction: column; gap: 1.25rem; }
   .hero-actions { flex-direction: column; align-items: stretch; }
