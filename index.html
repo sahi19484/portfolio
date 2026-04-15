@@ -63,12 +63,18 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 1.4rem 5%;
+<<<<<<< HEAD
   transition: background 0.4s, backdrop-filter 0.4s, transform 0.4s ease, opacity 0.4s ease;
+=======
+  background: rgba(8,11,16,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+>>>>>>> parent of 413d435 (Revert "Update index.html")
 }
 nav.scrolled {
-  background: rgba(8,11,16,0.85);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
+  background: rgba(8,11,16,0.96);
+  border-bottom-color: var(--border);
 }
 nav.nav-hidden {
   transform: translateY(-125%);
