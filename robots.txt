@@ -1,0 +1,17 @@
+# robots.txt — sahilmungara.netlify.app
+
+User-agent: *
+Allow: /
+
+# Block AI training bots (optional — remove if you want AI to index you)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://sahilmungara.netlify.app/sitemap.xml
