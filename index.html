@@ -2516,14 +2516,14 @@
           role, let's talk.
         </p>
 
-        <!-- Lightweight contact form via FormSubmit (no backend needed).
-             First submission triggers a one-time confirmation email to
-             sahil.mungara147@gmail.com — confirm it once to activate. -->
+        <!-- Contact form via Netlify Forms -->
         <form
           class="contact-form"
-          action="https://formsubmit.co/sahil.mungara147@gmail.com"
+          name="contact"
           method="POST"
+          netlify
         >
+          <input type="hidden" name="form-name" value="contact" />
           <input type="text" name="name" placeholder="Your name" required />
           <input type="email" name="email" placeholder="Your email" required />
           <textarea
