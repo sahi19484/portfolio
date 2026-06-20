@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- ══ SEO: CORE ══════════════════════════════════════════════════════ -->
-    <title>Sahil Mungara — Computer Engineer | Full Stack Developer | React, Node.js, Django</title>
+    <title>Sahil Mungara | Full Stack Developer — React, Node.js</title>
     <meta name="description" content="Sahil Mungara is a Full Stack Developer and Computer Engineering student at GEC Rajkot building production-ready apps with React, Node.js, Django & Python. 12+ merged PRs. Open to internships and freelance projects." />
     <meta name="keywords" content="Sahil Mungara, Full Stack Developer, React Developer, Node.js Developer, Django Developer, Python, GEC Rajkot, Open Source Contributor, Portfolio, Software Engineer India" />
     <meta name="author" content="Sahil Mungara" />
@@ -535,6 +535,61 @@
         color: var(--accent);
       }
 
+      .btn-resume {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: transparent;
+        color: var(--accent2);
+        font-size: 0.9rem;
+        font-weight: 500;
+        padding: 0.85rem 1.6rem;
+        border-radius: 8px;
+        text-decoration: none;
+        border: 1px dashed rgba(0, 148, 255, 0.4);
+        cursor: none;
+        transition:
+          border-color 0.2s,
+          background 0.2s,
+          transform 0.2s;
+      }
+
+      .btn-resume:hover {
+        border-style: solid;
+        border-color: var(--accent2);
+        background: rgba(0, 148, 255, 0.08);
+        transform: translateY(-3px);
+      }
+
+      .hero-availability {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(0, 212, 170, 0.08);
+        border: 1px solid rgba(0, 212, 170, 0.2);
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        padding: 0.4rem 1rem;
+        border-radius: 100px;
+        margin-bottom: 2rem;
+        opacity: 0;
+        animation:
+          fadeUp 0.6s 0.2s forwards,
+          glow-pulse 3s 0.8s infinite;
+      }
+
+      .hero-availability::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        background: var(--accent);
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+        flex-shrink: 0;
+      }
+
       .hero-stats {
         display: flex;
         gap: 3rem;
@@ -978,36 +1033,22 @@
         box-shadow: 0 4px 12px rgba(0, 212, 170, 0.15);
       }
 
-      .skill-bar-row {
-        margin-top: 0.9rem;
+      .skill-tier {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent2);
+        margin-top: 1rem;
+        padding-top: 0.9rem;
+        border-top: 1px solid var(--border);
       }
 
-      .skill-bar-label {
-        display: flex;
-        justify-content: space-between;
-        font-size: 0.78rem;
-        color: var(--muted);
-        margin-bottom: 0.4rem;
-      }
-
-      .skill-bar-track {
-        height: 5px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 5px;
-        overflow: hidden;
-      }
-
-      .skill-bar-fill {
-        height: 100%;
-        border-radius: 5px;
-        background: linear-gradient(90deg, var(--accent), var(--accent2));
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      .skill-bar-fill.animated {
-        transform: scaleX(1);
+      .skill-tier.core {
+        color: var(--accent);
       }
 
       /* ── EXPERIENCE ────────────────────────────────────────────── */
@@ -1268,11 +1309,90 @@
         transform: translateX(2px);
       }
 
-      .project-link:hover::after {
-        transform: translate(4px, -4px);
+      .project-media {
+        height: 150px;
+        border-radius: 14px;
+        margin-bottom: 1.4rem;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 212, 170, 0.12),
+          rgba(124, 58, 237, 0.1)
+        );
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+        color: var(--accent);
+        position: relative;
+        overflow: hidden;
       }
 
-      /* ── EDUCATION & CERTS ─────────────────────────────────────── */
+      .project-media span.media-hint {
+        position: absolute;
+        bottom: 8px;
+        right: 10px;
+        font-family: var(--mono);
+        font-size: 0.62rem;
+        color: var(--muted);
+        letter-spacing: 0.04em;
+      }
+
+      .project-ps {
+        margin-bottom: 1rem;
+      }
+
+      .project-ps p {
+        font-size: 0.85rem;
+        line-height: 1.65;
+        color: var(--muted);
+        margin-bottom: 0.6rem;
+      }
+
+      .project-ps p strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .project-impact {
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        color: var(--accent);
+        background: rgba(0, 212, 170, 0.06);
+        border: 1px solid rgba(0, 212, 170, 0.18);
+        border-radius: 8px;
+        padding: 0.5rem 0.8rem;
+        margin-bottom: 1.4rem;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+
+      .project-link.is-disabled {
+        color: var(--muted);
+        cursor: not-allowed;
+        opacity: 0.65;
+      }
+
+      .project-link.is-disabled::after {
+        content: "soon";
+        font-size: 0.7rem;
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        padding: 0.1rem 0.5rem;
+      }
+
+      .project-link.is-disabled:hover {
+        gap: 6px;
+        transform: none;
+      }
+
+      .project-link.is-disabled:hover::after {
+        transform: none;
+      }
       #education {
         background: var(--bg2);
       }
@@ -1333,6 +1453,51 @@
         font-family: var(--mono);
         font-size: 0.75rem;
         color: var(--muted);
+      }
+
+      /* ── ACHIEVEMENTS (split out, high visual weight) ──────────── */
+      #achievements {
+        background: var(--bg);
+      }
+
+      .achv-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.2rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .achv-stat {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1.4rem 1rem;
+        text-align: center;
+        transition:
+          border-color 0.3s,
+          transform 0.3s;
+      }
+
+      .achv-stat:hover {
+        border-color: rgba(0, 212, 170, 0.3);
+        transform: translateY(-6px);
+      }
+
+      .achv-num {
+        font-family: var(--syne);
+        font-size: 2.1rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .achv-label {
+        font-size: 0.75rem;
+        color: var(--muted);
+        letter-spacing: 0.04em;
+        margin-top: 0.3rem;
       }
 
       .cert-list {
@@ -1478,6 +1643,62 @@
         max-width: 620px;
         margin: 0 auto;
         animation: scale-grow 0.8s 0.3s both;
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+        animation: fadeUp 0.6s 0.6s both;
+        text-align: left;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 0.85rem 1rem;
+        color: var(--text);
+        font-family: var(--dm);
+        font-size: 0.92rem;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        border-color: var(--accent);
+      }
+
+      .contact-form textarea {
+        resize: vertical;
+        min-height: 110px;
+      }
+
+      .contact-form button {
+        align-self: center;
+      }
+
+      .contact-divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: var(--muted);
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin: 2rem 0 1.5rem;
+      }
+
+      .contact-divider::before,
+      .contact-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
       }
 
       .contact-content p {
@@ -1630,7 +1851,7 @@
           display: none;
         }
 
-        .proj ect-card:hover {
+        .project-card:hover {
           transform: none;
           box-shadow: none;
         }
@@ -1824,7 +2045,9 @@
         <li><a href="#skills">Skills</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#achievements">Achievements</a></li>
         <li><a href="#education">Education</a></li>
+        <li><a href="resume.pdf" target="_blank" rel="noopener">Resume</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -1838,7 +2061,7 @@
       <div class="hero-glow-1"></div>
       <div class="hero-glow-2"></div>
       <div class="hero-content">
-        <div class="hero-badge"></div>
+        <div class="hero-availability">Open to internships · Graduating 2027</div>
         <h1 class="hero-name">
           <span class="line1">Sahil</span><br />
           <span class="line2">Mungara</span>
@@ -1848,13 +2071,17 @@
         </p>
         <p class="hero-desc">
           Computer Engineering student building production-ready apps with
-          React, Node.js, Django &amp; Python. Writing clean code that scales.
+          React, Node.js, Django &amp; Python. I ship measurable performance
+          gains, not just features — writing clean code that scales.
         </p>
         <div class="hero-actions">
           <a href="#projects" class="btn-primary"
             >View My Work <span>↓</span></a
           >
           <a href="#contact" class="btn-ghost">Get In Touch</a>
+          <a href="resume.pdf" target="_blank" rel="noopener" class="btn-resume"
+            >Download Resume ↓</a
+          >
         </div>
         <div class="hero-stats">
           <div>
@@ -1885,7 +2112,16 @@
         <div class="about-avatar-wrap reveal">
           <div class="about-accent-ring"></div>
           <div class="about-avatar-inner">
-            <span class="avatar-initials">SM</span>
+            <img
+              src="headshot.jpg"
+              alt="Sahil Mungara, Full Stack Developer"
+              loading="lazy"
+              width="280"
+              height="280"
+              style="width: 100%; height: 100%; object-fit: cover; display: block"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <span class="avatar-initials" style="display: none">SM</span>
           </div>
           <div class="about-accent-dot">💻</div>
         </div>
@@ -1927,131 +2163,58 @@
       </div>
       <div class="skills-wrap">
         <div class="skill-card reveal">
-          <div class="skill-cat">Languages</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Java</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">TypeScript</span>
-            <span class="skill-tag">C</span>
-          </div>
-          <div class="skill-bar-row">
-            <div class="skill-bar-label">
-              <span>Python</span><span>85%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" style="--w: 0.85"></div>
-            </div>
-          </div>
-          <div class="skill-bar-row">
-            <div class="skill-bar-label">
-              <span>JavaScript / TypeScript</span><span>82%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" style="--w: 0.82"></div>
-            </div>
-          </div>
-          <div class="skill-bar-row">
-            <div class="skill-bar-label"><span>Java</span><span>75%</span></div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" style="--w: 0.75"></div>
-            </div>
-          </div>
-        </div>
-        <div class="skill-card reveal">
-          <div class="skill-cat">Frontend</div>
+          <div class="skill-cat">Core Stack — Daily Use</div>
           <div class="skill-tags">
             <span class="skill-tag">React.js</span>
-            <span class="skill-tag">HTML5</span>
-            <span class="skill-tag">CSS3</span>
-            <span class="skill-tag">Tailwind CSS</span>
-          </div>
-          <div class="skill-bar-row">
-            <div class="skill-bar-label">
-              <span>React.js</span><span>85%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" style="--w: 0.85"></div>
-            </div>
-          </div>
-          <div class="skill-bar-row">
-            <div class="skill-bar-label">
-              <span>Tailwind CSS</span><span>88%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" style="--w: 0.88"></div>
-            </div>
-          </div>
-        </div>
-        <div class="skill-card reveal">
-          <div class="skill-cat">Backend</div>
-          <div class="skill-tags">
+            <span class="skill-tag">TypeScript</span>
             <span class="skill-tag">Node.js</span>
             <span class="skill-tag">Express.js</span>
             <span class="skill-tag">Django</span>
-            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">Python</span>
           </div>
-          <div class="skill-bar-row">
-            <div class="skill-bar-label">
-              <span>Node.js / Express</span><span>80%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" style="--w: 0.8"></div>
-            </div>
-          </div>
-          <div class="skill-bar-row">
-            <div class="skill-bar-label">
-              <span>Django</span><span>78%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" style="--w: 0.78"></div>
-            </div>
-          </div>
+          <div class="skill-tier core">● Core — used in production projects</div>
         </div>
         <div class="skill-card reveal">
-          <div class="skill-cat">Databases &amp; Cloud</div>
+          <div class="skill-cat">Frontend &amp; Styling</div>
           <div class="skill-tags">
-            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">Tailwind CSS</span>
+            <span class="skill-tag">JavaScript</span>
+          </div>
+          <div class="skill-tier core">● Core — used in production projects</div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-cat">Databases</div>
+          <div class="skill-tags">
             <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">MySQL</span>
             <span class="skill-tag">PostgreSQL</span>
+          </div>
+          <div class="skill-tier core">● Core — used in production projects</div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-cat">Cloud &amp; Tooling</div>
+          <div class="skill-tags">
             <span class="skill-tag">AWS EC2/S3</span>
             <span class="skill-tag">GCP</span>
-          </div>
-          <div class="skill-bar-row">
-            <div class="skill-bar-label">
-              <span>Databases</span><span>78%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" style="--w: 0.78"></div>
-            </div>
-          </div>
-          <div class="skill-bar-row">
-            <div class="skill-bar-label">
-              <span>Cloud (AWS / GCP)</span><span>65%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" style="--w: 0.65"></div>
-            </div>
-          </div>
-        </div>
-        <div class="skill-card reveal">
-          <div class="skill-cat">CS Fundamentals</div>
-          <div class="skill-tags">
-            <span class="skill-tag">DSA</span>
-            <span class="skill-tag">OOP</span>
-            <span class="skill-tag">Algorithms</span>
-            <span class="skill-tag">Arrays / Linked Lists</span>
-          </div>
-        </div>
-        <div class="skill-card reveal">
-          <div class="skill-cat">DevOps &amp; Tools</div>
-          <div class="skill-tags">
             <span class="skill-tag">Git</span>
             <span class="skill-tag">GitHub</span>
             <span class="skill-tag">Docker</span>
             <span class="skill-tag">Postman</span>
-            <span class="skill-tag">VS Code</span>
           </div>
+          <div class="skill-tier">○ Working knowledge — deployment &amp; collaboration</div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-cat">Also Comfortable With</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">REST API Design</span>
+            <span class="skill-tag">DSA</span>
+            <span class="skill-tag">OOP</span>
+          </div>
+          <div class="skill-tier">○ Background — CS fundamentals &amp; coursework</div>
         </div>
       </div>
     </section>
@@ -2122,92 +2285,133 @@
       </div>
       <div class="projects-grid">
         <div class="project-card reveal">
+          <img
+            src="resumefit-screenshot.png"
+            alt="ResumeFit – ATS-friendly resume builder homepage with 'Turn LinkedIn into an ATS Winner' headline"
+            loading="lazy"
+            class="project-media"
+            style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"
+          />
           <div class="project-num">01 / 03</div>
           <div class="project-title">ResumeFit</div>
-          <p class="project-desc">
-            ATS-friendly resume builder with dynamic templates, secure REST
-            APIs, and one-click PDF export — reducing user formatting time by
-            ~70%. Sub-200ms template switching with optimized React component
-            rendering.
-          </p>
+          <div class="project-ps">
+            <p><strong>Problem:</strong> Job seekers waste hours manually reformatting resumes for every application, and most free builders produce templates that fail ATS parsing.</p>
+            <p><strong>Solution:</strong> A production-ready resume builder with dynamic, ATS-safe templates, secure REST APIs, and one-click PDF export.</p>
+          </div>
+          <div class="project-impact">~70% less formatting time · sub-200ms template switching</div>
           <div class="project-stack">
             <span class="stack-tag">React.js</span>
             <span class="stack-tag">TypeScript</span>
             <span class="stack-tag">Tailwind CSS</span>
             <span class="stack-tag">Node.js</span>
           </div>
-          <a
-            href="https://github.com/sahi19484/ResumeFit"
-            target="_blank"
-            class="project-link"
-            >View on GitHub</a
-          >
+          <div class="project-links">
+            <!-- TODO: replace # with your deployed URL once live, and drop "is-disabled" -->
+            <a href="#" class="project-link is-disabled" aria-disabled="true" onclick="return false;">Live Demo</a>
+            <a
+              href="https://github.com/sahi19484/ResumeFit"
+              target="_blank"
+              rel="noopener"
+              class="project-link"
+              >View Code</a
+            >
+          </div>
         </div>
         <div class="project-card reveal">
+          <img
+            src="zoomies-snuggles-screenshot.png"
+            alt="Zoomies &amp; Snuggles – Pet adoption platform homepage showing hero section with puppies"
+            loading="lazy"
+            class="project-media"
+            style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"
+          />
           <div class="project-num">02 / 03</div>
           <div class="project-title">Zoomies &amp; Snuggles</div>
-          <p class="project-desc">
-            Full-stack pet adoption platform with multilingual UI (3 languages),
-            serving 100+ users. 40% faster API responses via server-side
-            filtering and pagination. Lighthouse performance score of 91.
-          </p>
+          <div class="project-ps">
+            <p><strong>Problem:</strong> Shelters and adopters lack a unified, multilingual platform to list and find pets for adoption.</p>
+            <p><strong>Solution:</strong> A full-stack adoption platform with multilingual UI, server-side filtering, and pagination for fast browsing at scale.</p>
+          </div>
+          <div class="project-impact">100+ users · 3 languages · 40% faster API · Lighthouse 91</div>
           <div class="project-stack">
             <span class="stack-tag">React 18</span>
             <span class="stack-tag">TypeScript</span>
             <span class="stack-tag">Tailwind CSS</span>
             <span class="stack-tag">MongoDB</span>
           </div>
-          <a
-            href="https://github.com/sahi19484/Zoomies-Snuggles"
-            target="_blank"
-            class="project-link"
-            >View on GitHub</a
-          >
+          <div class="project-links">
+            <a href="https://zoomies-snuggles.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo</a>
+            <a
+              href="https://github.com/sahi19484/Zoomies-Snuggles"
+              target="_blank"
+              rel="noopener"
+              class="project-link"
+              >View Code</a
+            >
+          </div>
         </div>
         <div class="project-card reveal">
+          <img
+            src="medibot-screenshot.png"
+            alt="MediBot – AI Medical Assistant chat interface showing a conversation with the bot"
+            loading="lazy"
+            class="project-media"
+            style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"
+          />
           <div class="project-num">03 / 03</div>
           <div class="project-title">MediBot</div>
-          <p class="project-desc">
-            NLP-powered AI medical chatbot using Django and SQL. 35% better
-            symptom-matching accuracy over rule-based baseline. 3 integrated ML
-            models for intent classification with 99.5% uptime in testing.
-          </p>
+          <div class="project-ps">
+            <p><strong>Problem:</strong> Rule-based symptom checkers are inaccurate and inaccessible for everyday users.</p>
+            <p><strong>Solution:</strong> An NLP-powered medical chatbot built on Django and SQL with multiple integrated ML models for intent classification.</p>
+          </div>
+          <div class="project-impact">35% accuracy gain · 3 ML models · 99.5% uptime in testing</div>
           <div class="project-stack">
             <span class="stack-tag">Python</span>
             <span class="stack-tag">Django</span>
             <span class="stack-tag">SQL</span>
             <span class="stack-tag">ML Libraries</span>
           </div>
-          <a
-            href="https://github.com/sahi19484/medibot"
-            target="_blank"
-            class="project-link"
-            >View on GitHub</a
-          >
+          <div class="project-links">
+            <a href="#" class="project-link is-disabled" aria-disabled="true" onclick="return false;">Live Demo</a>
+            <a
+              href="https://github.com/sahi19484/medibot"
+              target="_blank"
+              rel="noopener"
+              class="project-link"
+              >View Code</a
+            >
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- EDUCATION -->
-    <section id="education">
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements">
       <div class="reveal">
-        <div class="section-label">05 — Education</div>
-        <h2 class="section-title">Learning Path</h2>
+        <div class="section-label">05 — Achievements</div>
+        <h2 class="section-title">Proof, Not Just Claims</h2>
         <div class="section-divider"></div>
       </div>
-      <div class="edu-grid">
-        <div class="edu-card reveal">
-          <div class="edu-icon">🎓</div>
-          <div class="edu-degree">B.E. Computer Engineering</div>
-          <div class="edu-school">
-            Gujarat Technological University — GEC Rajkot
-          </div>
-          <div class="edu-meta">2023 – 2027 &nbsp;·&nbsp; CGPA: 8.0 / 10</div>
+      <div class="achv-grid">
+        <div class="achv-stat reveal">
+          <div class="achv-num">12+</div>
+          <div class="achv-label">PRs Merged</div>
         </div>
-      </div>
-      <br />
-      <div class="reveal">
-        <div class="section-label" style="margin-top: 2rem">Certifications</div>
+        <div class="achv-stat reveal">
+          <div class="achv-num">5+</div>
+          <div class="achv-label">OSS Repos</div>
+        </div>
+        <div class="achv-stat reveal">
+          <div class="achv-num">91</div>
+          <div class="achv-label">Lighthouse Score</div>
+        </div>
+        <div class="achv-stat reveal">
+          <div class="achv-num">70%</div>
+          <div class="achv-label">Time Saved (ResumeFit)</div>
+        </div>
+        <div class="achv-stat reveal">
+          <div class="achv-num">35%</div>
+          <div class="achv-label">Accuracy Gain (MediBot)</div>
+        </div>
       </div>
       <div class="cert-list">
         <div class="cert-item reveal">
@@ -2227,10 +2431,29 @@
       </div>
     </section>
 
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="reveal">
+        <div class="section-label">06 — Education</div>
+        <h2 class="section-title">Learning Path</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-card reveal">
+          <div class="edu-icon">🎓</div>
+          <div class="edu-degree">B.E. Computer Engineering</div>
+          <div class="edu-school">
+            Gujarat Technological University — GEC Rajkot
+          </div>
+          <div class="edu-meta">2023 – 2027 &nbsp;·&nbsp; CGPA: 8.0 / 10</div>
+        </div>
+      </div>
+    </section>
+
     <!-- COMMUNITY -->
     <section id="community">
       <div class="reveal">
-        <div class="section-label">06 — Community</div>
+        <div class="section-label">07 — Community</div>
         <h2 class="section-title">Beyond Code</h2>
         <div class="section-divider"></div>
       </div>
@@ -2283,7 +2506,7 @@
       <div class="contact-glow"></div>
       <div class="contact-content reveal">
         <div class="section-label" style="justify-content: center">
-          07 — Contact
+          08 — Contact
         </div>
         <h2 class="section-title">Let's Build Together</h2>
         <div class="section-divider" style="margin: 1rem auto 2rem"></div>
@@ -2292,6 +2515,27 @@
           and open-source collaborations. If you have an interesting idea or
           role, let's talk.
         </p>
+
+        <!-- Lightweight contact form via FormSubmit (no backend needed).
+             First submission triggers a one-time confirmation email to
+             sahil.mungara147@gmail.com — confirm it once to activate. -->
+        <form
+          class="contact-form"
+          action="https://formsubmit.co/sahil.mungara147@gmail.com"
+          method="POST"
+        >
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="email" name="email" placeholder="Your email" required />
+          <textarea
+            name="message"
+            placeholder="What are you building / hiring for?"
+            required
+          ></textarea>
+          <button type="submit" class="btn-primary">Send Message →</button>
+        </form>
+
+        <div class="contact-divider">or reach me directly</div>
+
         <a
           href="mailto:sahil.mungara147@gmail.com"
           class="btn-primary"
@@ -2331,6 +2575,14 @@
               />
             </svg>
             GitHub
+          </a>
+          <a href="resume.pdf" target="_blank" rel="noopener" class="contact-link">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"
+              />
+            </svg>
+            Resume
           </a>
         </div>
       </div>
@@ -2411,33 +2663,6 @@
       document
         .querySelectorAll(".reveal")
         .forEach((el) => observer.observe(el));
-
-      // ── SKILL BARS
-      const barObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target
-                .querySelectorAll(".skill-bar-fill")
-                .forEach((bar, i) => {
-                  const w = parseFloat(bar.style.getPropertyValue("--w"));
-                  setTimeout(
-                    () => {
-                      bar.classList.add("animated");
-                      bar.style.transform = `scaleX(${w})`;
-                    },
-                    i * 150 + 200,
-                  );
-                });
-              barObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.3 },
-      );
-      document
-        .querySelectorAll(".skill-card")
-        .forEach((card) => barObserver.observe(card));
 
       // ── SMOOTH ACTIVE NAV
       const sections = document.querySelectorAll("section[id]");
@@ -2608,7 +2833,7 @@
                 "author": { "@id": "https://sahilmungara.netlify.app/#person" },
                 "programmingLanguage": ["React 18", "TypeScript", "Tailwind CSS", "MongoDB"],
                 "codeRepository": "https://github.com/sahi19484/Zoomies-Snuggles",
-                "url": "https://github.com/sahi19484/Zoomies-Snuggles"
+                "url": "https://zoomies-snuggles.vercel.app/"
               }
             },
             {
