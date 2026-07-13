@@ -3,7 +3,7 @@
 Welcome to the repository for my professional portfolio. This site showcases my journey as a Computer Engineering student at **GEC Rajkot**, my contributions to the open-source community, and my technical expertise in the MERN stack and Django.
 
 ## 🌐 Live Demo
-**[Insert Your Live URL Here - e.g., sahilmungara.com]**
+[**https://sahilmungara.netlify.app/**]
 
 ---
 
