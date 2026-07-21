@@ -1,0 +1,34 @@
+Sahil Mungara Portfolio Reference
+================================
+
+Name: Sahil Mungara
+Role: Full Stack Developer and Computer Engineering student
+Location: Rajkot, Gujarat, India
+Website: https://sahilmungara.netlify.app/
+Email: sahil.mungara147@gmail.com
+LinkedIn: https://www.linkedin.com/in/gecr-comp230200107090/
+GitHub: https://github.com/sahi19484
+Resume: https://sahilmungara.netlify.app/resume.pdf
+
+Summary:
+Sahil Mungara is a full-stack developer and open-source contributor who builds production-ready web applications using React, Node.js, Django, Python, and TypeScript. He focuses on performance, maintainability, and measurable product impact.
+
+Highlights:
+- Computer Engineering student at GEC Rajkot (GTU), graduating in 2027
+- 12+ merged pull requests in open-source projects
+- Experience building full-stack products with React, TypeScript, Node.js, Django, and Python
+- Projects include ResumeFit, Zoomies & Snuggles, and MediBot
+- Open to internships, freelance work, and collaborations
+
+Tech Stack:
+- Frontend: React.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS
+- Backend: Node.js, Express.js, Django, Python
+- Databases: MongoDB, MySQL, PostgreSQL
+- Tools: Git, GitHub, Docker, AWS EC2/S3, GCP, Postman
+
+Projects:
+- ResumeFit: ATS-friendly resume builder with secure APIs and one-click export
+- Zoomies & Snuggles: multilingual pet adoption platform with fast filtering and pagination
+- MediBot: AI-assisted medical chatbot with NLP and multiple ML models
+
+Use this page as a reference for portfolio structure, modern personal branding, technical storytelling, and a polished full-stack developer profile.
