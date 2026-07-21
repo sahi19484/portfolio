@@ -1,0 +1,14 @@
+Indexing checklist for Sahil Mungara portfolio
+===========================================
+
+1. Make sure the main site is live and publicly reachable.
+2. Keep the sitemap updated at:
+   https://sahilmungara.netlify.app/sitemap.xml
+3. Ensure the homepage and new pages are linked from the site navigation.
+4. Submit the homepage and important pages to Google Search Console.
+5. Submit the sitemap to Google Search Console and Bing Webmaster Tools.
+6. Share the site on social platforms and developer communities to increase crawl frequency.
+7. Keep content updated regularly with fresh projects, achievements, and blog-like updates.
+8. Use clear titles, descriptions, headings, and structured data for AI readability.
+9. Confirm that pages return 200 OK and are not blocked by robots.txt.
+10. Monitor indexing over the next few days to see whether new pages are discovered.
